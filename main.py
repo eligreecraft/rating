@@ -14,7 +14,7 @@ from used import USED
 access_token = os.getenv("VKTOKEN")
 v = "5.131"
 group_id = -218081274
-ignored_ids = {3159776, 90460059}
+ignored_ids = {3159776, 90460059, 495748987}
 
 api = vk.API(access_token=access_token, v=v)
 
