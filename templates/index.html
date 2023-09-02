@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eligree Craft | Рейтинг активности</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+</head>
+<body>
+    <main>
+        <section>
+            <header>
+                <h2><a href="https://vk.com/eligreecraft">Eligree Craft</a></h2>
+                <p>Рейтинг активности. Обновлён <time datetime="{{ report.generated_at_iso_8601 }}">{{ report.generated_at }}</time>.</p>
+            </header>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Участник</th>
+                        <th>Лайки</th>
+                        <th>Комментарии</th>
+                        <th>Баллы</th>
+                    </tr>
+                </thead>
+                {% for entry in report.entries -%}
+                <tr>
+                    <td><a href="{{ entry.url }}">{{ entry.name }}</a></td>
+                    <td>{{ entry.likes }}</td>
+                    <td>{{ entry.comments }}</td>
+                    {% if entry.used > 0 %}
+                    <td>{{ entry.balls }} (использовано {{ entry.used }})</td>
+                    {% else %}
+                    <td>{{ entry.balls }}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+            <hr>
+        </section>
+    </main>
+    <script>
+        document.querySelectorAll("time").forEach(function (time) {
+            let dt = new Date(time.getAttribute("datetime"));
+            time.innerText = `${dt.toLocaleString()}`;
+        });
+    </script>
+</body>
+</html>
