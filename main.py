@@ -33,7 +33,7 @@ ball_ids = []
 uid_to_name = {}
 uid_to_url = {}
 
-for post in tqdm(posts[:5]):  # Todo убрать ограничение
+for post in tqdm(posts):
     post_id = post["id"]
 
     likes = paginator.get_all_likes(api, group_id, post_id)
