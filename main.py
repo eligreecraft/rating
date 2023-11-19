@@ -46,6 +46,8 @@ for post in tqdm(posts):
     for _ in range(comment_ball_count):
         ball_ids.extend(comments)
 
+ball_ids = list(filter(lambda x: x > 0, ball_ids))
+
 like_counter = Counter(liker_ids)
 comment_counter = Counter(commenter_ids)
 ball_ids = Counter(ball_ids)
